@@ -1,0 +1,13 @@
+
+1. public static void main(String[] argv)
+2. class NodeComparator implements Comparator<Node>
+3. System.out.println()
+4. int[] x = 
+5. PriorityQueue heap = new PriorityQueue<Node>(N, comp)  ---> this is wrong 
+    should be PriorityQueue<Node> heap = new PriorityQueue<Node>(N, comp);
+6. heap.add(node)
+7. node = heap.poll()
+8. NodeComparator comp = new NodeComparator<Node>();  ---> this is wrong.
+9. how to run the problem: 
+   java -cp classpath classname
+   java -cp ./ findN
