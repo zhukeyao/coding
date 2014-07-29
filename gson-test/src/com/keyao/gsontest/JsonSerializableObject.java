@@ -1,5 +1,7 @@
 package com.keyao.gsontest;
 
+import java.lang.reflect.*;
+
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.keyao.gsontest.SerializableObject;
@@ -15,13 +17,15 @@ public class JsonSerializableObject<T> extends GenericSerializableObject<T> {
     private T data;
     boolean prettyPrint;
     
-    public JsonSerializableObject(T d) {
+    public JsonSerializableObject(T d, Class entityClass) {
+    	super(entityClass);
         data = d;
-        prettyPrint = false;
+        prettyPrint = false;    
      }
     
-    public JsonSerializableObject() {
-        data = null;
+    public JsonSerializableObject(Class entityClass) {
+        super(entityClass);
+    	data = null;
         prettyPrint = false;
     }
     
@@ -42,7 +46,7 @@ public class JsonSerializableObject<T> extends GenericSerializableObject<T> {
     public T deserialize(String input) {
         GsonBuilder builder = new GsonBuilder();
         Gson gson = builder.create();
-        data = (T)gson.fromJson(input, typeParameterClass);
+        data = (T)gson.fromJson(input, entityClass);
         return data;
     }
     

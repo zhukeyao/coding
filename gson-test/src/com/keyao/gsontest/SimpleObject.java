@@ -56,13 +56,15 @@ public class SimpleObject {
 	}
 		
 	public static void main( String[ ] args ) throws Exception {
+		//DataTest<SimpleObject> testData = new DataTest<SimpleObject>();
+		
 		SimpleObject testObject = new SimpleObject();
-		JsonSerializableObject<SimpleObject> jsonObject = new JsonSerializableObject(testObject);
+		JsonSerializableObject<SimpleObject> jsonObject = new JsonSerializableObject<SimpleObject>(testObject, SimpleObject.class);
 		jsonObject.SetPrettyPrint(true);
 		String outputString = jsonObject.serialize();
         System.out.println(outputString);
         
-        JsonSerializableObject<SimpleObject> jsonObject2 = new JsonSerializableObject();
+        JsonSerializableObject<SimpleObject> jsonObject2 = new JsonSerializableObject<SimpleObject>(SimpleObject.class);
         jsonObject2.deserialize(outputString);
         SimpleObject testObject2 = jsonObject2.getData();
         System.out.println(testObject2.toString());
