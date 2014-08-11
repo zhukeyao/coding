@@ -6,6 +6,7 @@ import java.lang.reflect.Type;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
+import java.util.ArrayList;
 
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Lists;
@@ -13,7 +14,11 @@ import com.google.common.primitives.Ints;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
-
+/**
+ * This is a sample to show how to use Gson to convert collection object.
+ * @author keyao
+ *
+ */
 public class CollectionObject {
 
 	static public void main(String[] argv) throws Exception {
@@ -45,5 +50,20 @@ public class CollectionObject {
 		System.out.println(collectionJsonOutput);
 		Type collectionListType = new TypeToken<Collection<Integer>>(){}.getType();
 		System.out.println(gson.toJson(gson.fromJson(collectionJsonOutput, collectionListType)));
+		
+		/**
+		 * example of how to convert Generic collection of user-defined object to json
+		 */
+		Collection<SimpleObject> simpleObjectList = new ArrayList<SimpleObject>();
+		SimpleObject obj1 = new SimpleObject();
+		SimpleObject obj2 = new SimpleObject();
+		simpleObjectList.add(obj1);
+		simpleObjectList.add(obj2);
+		collectionJsonOutput = gson.toJson(simpleObjectList);
+		System.out.println(collectionJsonOutput);
+		collectionListType = new TypeToken<Collection<SimpleObject>>(){}.getType();
+		System.out.println(gson.toJson(gson.fromJson(collectionJsonOutput, collectionListType)));
+			
+		
 	}
 }
