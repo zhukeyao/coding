@@ -3,6 +3,12 @@ package com.keyao.test.concurrent;
 import java.lang.String;
 import java.lang.Runnable;
 import java.util.concurrent.Callable;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.Future;
+import java.util.concurrent.ThreadPoolExecutor;
+import java.util.concurrent.Executors;
 
 /**
  * Basic test example for java threading.
@@ -98,17 +104,30 @@ public class BasicThreading {
 	public void startSimpleThreadTest() throws InterruptedException {
 	
 		/** test direct thread launch **/
+		System.out.println("Starting basic threading testing");
 		TestThread testThread = new TestThread();
 		testThread.start();
 		testThread.join();
 		
 		/** test thread launch a runnable**/
+		System.out.println("Starting basic runnable testing");
 		Thread runnableThread = new Thread(new TestRunnable());
 		runnableThread.start();
 		runnableThread.join();
 		
 		/** test executor service, callable and future ***/
-	
+		System.out.println("Starting basic callable/future testing");
+		ExecutorService service = Executors.newFixedThreadPool(5);
+		Future<String> future = service.submit(new TestCallable());
+		String result = "default future result";
+		try {
+	         result = future.get();
+	      } catch (InterruptedException e) {
+	        e.printStackTrace();
+	      } catch (ExecutionException e) {
+	        e.printStackTrace();
+	      }
+		
 	}
 	
 	public static void main(String[] arg) throws Exception {
