@@ -1,0 +1,16 @@
+1. local
+   a. pages
+   b. location technology (new york)
+   c. vertical
+      1) Events. (sale, farmers market, concert) 600M monthyly, daily 100M, ticketing (ticket master, eventbride)
+         local
+      2) personal care service, salon, spa, groupon  
+      3) food and drink (revervation, order ahead/delievery) 
+
+      model recommendation, 
+      integration search ranking to 
+
+      (PM parter, design partner, data scientiest, ranking/infastructure. 
+
+
+      infastructure, core app, growth, ad and business platform.
